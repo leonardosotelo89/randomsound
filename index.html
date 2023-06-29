@@ -1,0 +1,56 @@
+<html>
+  <head>
+<meta name="viewport" 
+content="width=device-width,
+                  height=device-height, 
+                  initial-scale=1.0">
+    <title></title>
+    <style>
+*{margin:0px;padding:0px;}
+    body{background-color: rgb(0,0,0);
+               color: lime;
+} 
+#amarillo{
+  position: absolute ;
+  top: 50%;
+  left: 50%;
+  width: 100px ;
+  height: 100px ;
+  transform: translate(-50%,-50%);
+  background-color:yellow ;
+}
+    </style>
+  </head>
+  <body>
+   
+
+  </body>
+<script>
+let amarillo = document.createElement('div')
+document.body.appendChild(amarillo)
+amarillo.id = 'amarillo'
+
+let sounds = []
+sounds[0] = 'sonidos mp3/cuek.mp3'
+sounds[1] = 'sonidos mp3/hadouken.mp3'
+sounds[2] = 'sonidos mp3/kamehameha.mp3'
+sounds[3] = 'sonidos mp3/anime wow.mp3'
+
+  function onesound() {
+  let random = Math.floor(Math.random()*sounds.length);
+  let chosen = sounds[random];
+  let one = new Audio(chosen);
+  one.play();
+  amarillo.removeEventListener('click', onesound);
+  console.log(chosen);
+  one.onended = () => {
+    amarillo.addEventListener('click', onesound);
+    onesound(); // Call the onesound function again after the audio has ended
+  };
+}
+
+amarillo.addEventListener('click', onesound)
+
+</script>
+<footer>                        <!--              --></footer>
+</html> 
