@@ -10,14 +10,22 @@ content="width=device-width,
     body{background-color: rgb(0,0,0);
                color: lime;
 } 
-#amarillo{
+#play{
   position: absolute ;
   top: 50%;
   left: 50%;
   width: 100px ;
   height: 100px ;
   transform: translate(-50%,-50%);
-  background-color:yellow ;
+  background-color:green ;
+}
+#stop{
+  position: absolute ;
+  bottom: 0%;
+  right: 0%;
+  width: 100px ;
+  height: 100px ;
+  background-color:red ;
 }
     </style>
   </head>
@@ -26,9 +34,14 @@ content="width=device-width,
 
   </body>
 <script>
-let amarillo = document.createElement('div')
-document.body.appendChild(amarillo)
-amarillo.id = 'amarillo'
+let play = document.createElement('div')
+document.body.appendChild(play)
+play.id = 'play'
+let stop = document.createElement('div')
+document.body.appendChild(stop)
+stop.id = 'stop'
+
+
 
 let sounds = []
 sounds[0] = 'cuek.mp3'
@@ -41,15 +54,18 @@ sounds[3] = 'anime wow.mp3'
   let chosen = sounds[random];
   let one = new Audio(chosen);
   one.play();
-  amarillo.removeEventListener('click', onesound);
+  play.removeEventListener('click', onesound);
   console.log(chosen);
   one.onended = () => {
-    amarillo.addEventListener('click', onesound);
+    play.addEventListener('click', onesound);
     onesound(); // Call the onesound function again after the audio has ended
   };
 }
 
-amarillo.addEventListener('click', onesound)
+play.addEventListener('click', onesound)
+stop.addEventListener('click', ()=>{
+     window.location.reload()
+ }) 
 
 </script>
 <footer>                        <!--              --></footer>
